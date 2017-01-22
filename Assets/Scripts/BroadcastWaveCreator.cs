@@ -17,13 +17,13 @@ public class BroadcastWaveCreator : MonoBehaviour
 
 	void OnTriggerEnter(Collider other) 
 	{
-			if (other.CompareTag("Signal Disruptor")) {
-				CanGrow = false;
-				Vector3 scale = transform.localScale;
-				transform.localScale = new Vector3(scale.x + 0.1f, scale.y + 0.1f, scale.z + 0.1f);
-				//GetComponent<CapsuleCollider>().radius -= 0.65f;
-				print("broacaster signal disruptor");
-			}
+		if (other.CompareTag("Signal Disruptor")) {
+			CanGrow = false;
+			Vector3 scale = transform.localScale;
+			transform.localScale = new Vector3(scale.x + 0.1f, scale.y + 0.1f, scale.z + 0.1f);
+			//GetComponent<CapsuleCollider>().radius -= 0.65f;
+			print("broacaster signal disruptor");
+		}
 		else if(other.CompareTag("House"))
 		{
 			print("House by BroadcastWave");
@@ -33,11 +33,11 @@ public class BroadcastWaveCreator : MonoBehaviour
 	
 	public IEnumerator SpawnWave()
 	{
-		while(true)
-		{
+		while(true) {
 			yield return new WaitForSeconds(Delay);
 			GameObject go = (GameObject)GameObject.Instantiate(BroadcastWavePrefab, transform.position, Quaternion.identity);
 			go.GetComponent<BroadCastWave>().Limit = transform;
+			// go.transform.parent = this.transform;
 		}
 	}
 }

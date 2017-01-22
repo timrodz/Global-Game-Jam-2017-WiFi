@@ -10,7 +10,8 @@ public class SelectionManager : SingletonMonoBehaviour<SelectionManager>
 		None,
 		Broadcaster,
 		Expander,
-		Socket
+		Socket_Start,
+		Socket_End
 	}
 
 	public RouterManagerScript RouterManager;
@@ -50,7 +51,7 @@ public class SelectionManager : SingletonMonoBehaviour<SelectionManager>
 	public void OnSocketButtonDown()
 	{
 		print("OnSocketButtonDown");
-		Selection = Selections.Socket;
+		Selection = Selections.Socket_Start;
 
 		RouterManager.CreateRouter(Selection);
 		updateSocketAmount();

@@ -9,14 +9,15 @@ public class RouterAttributes : MonoBehaviour {
 	public enum RouterType {
 		Broadcaster,
 		Expander,
-		Socket
+		Socket_Start,
+		Socket_End
 	};
 	
 	public RouterType routerType;
 
 	public float BroadcastGrowSpeed = 0.1f;
-	
-	private RouterHandlerScript _routerHandler;
+	[HideInInspector]
+	public RouterHandlerScript _routerHandler;
 	
 	// Line renderer
 	LineRenderer lineRenderer;
@@ -71,7 +72,7 @@ public class RouterAttributes : MonoBehaviour {
 				lineRenderer.colorGradient = gradient;
 			}
 			break;
-			case RouterType.Socket:
+			case RouterType.Socket_Start:
 			{
 				CapsuleCollider cc = gameObject.AddComponent<CapsuleCollider>();
 				cc.isTrigger = true;
@@ -91,8 +92,6 @@ public class RouterAttributes : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		AnimateWaves();
 		
 		if (_routerHandler.hasBeenPlaced && _routerHandler.hasBeenActivated && _routerHandler.canGrow) {
 			
@@ -152,31 +151,28 @@ public class RouterAttributes : MonoBehaviour {
 				RaycastHit hit;
 				int typeOfWall = DetermineMaxLineLength(0, out hit);
 
-//				else {
-//					
-					if (typeOfWall == 1) {
-						
-						if (Mathf.Abs(lineRenderer.GetPosition(1).y) < hit.distance) {
-							CreateLine(2, lineRenderer.GetPosition(1).y - 0.1f);
-						}
-						else
+				if (typeOfWall == 1) {
+					
+					if (Mathf.Abs(lineRenderer.GetPosition(1).y) < hit.distance) {
+						CreateLine(2, lineRenderer.GetPosition(1).y - 0.1f);
+					}
+					else
+					{
+						ScaleBetweenPoints scaleBetween = _routerHandler.EffectGO.GetComponent<ScaleBetweenPoints>();
+						if(scaleBetween.EndPoint == null)
 						{
-							ScaleBetweenPoints scaleBetween = _routerHandler.EffectGO.GetComponent<ScaleBetweenPoints>();
-							if(scaleBetween.EndPoint == null)
-							{
-								GameObject go = new GameObject("Expander Anchor");
-								go.transform.position = hit.point;
-								scaleBetween.EndPoint = go.transform;
-								RouterManagerScript.Instance.HandleResourceSpent();
-							}
+							GameObject go = new GameObject("Expander Anchor");
+							go.transform.position = hit.point;
+							scaleBetween.EndPoint = go.transform;
+							RouterManagerScript.Instance.HandleResourceSpent();
 						}
-//					}
+					}
 					
 				}	
 				break;
 			}
 
-			case RouterType.Socket:
+			case RouterType.Socket_Start:
 			{
 				AnimateWaves();
 				CapsuleCollider cc = GetComponent<CapsuleCollider>();

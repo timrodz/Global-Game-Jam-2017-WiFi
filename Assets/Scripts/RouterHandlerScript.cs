@@ -92,13 +92,24 @@ public class RouterHandlerScript : MonoBehaviour {
 					hasBeenActivated = true;
 					EffectGO = (GameObject)Instantiate(ExpanderWavePrefab);
 					ScaleBetweenPoints line = EffectGO.GetComponent<ScaleBetweenPoints>();
-					line.StartPoint = transform; 
+					GameObject go = new GameObject("Temporary");
+					go.transform.position = transform.position - (transform.up * 0.75f);
+					line.StartPoint = go.transform;
+					
 				}
+				
+			}
+			else if (_routerAttrib.routerType == RouterAttributes.RouterType.Socket_Start) {
+				
+				print("Activated " + transform.name);
+				hasBeenActivated = true;
+				GetComponentInParent<RouterManagerScript>().CreateRouter(SelectionManager.Selections.Socket_End);
 				
 			}
 			else {
 				
-				
+				print("Activated " + transform.name);
+				hasBeenActivated = true;
 				
 			}
 			
@@ -137,7 +148,9 @@ public class RouterHandlerScript : MonoBehaviour {
 			// Check for expander and socket placement
 			else {
 				
-				if (!hasBeenPlaced && _routerAttrib.routerType != RouterAttributes.RouterType.Broadcaster) {
+				if (!hasBeenPlaced && 
+				(_routerAttrib.routerType != RouterAttributes.RouterType.Broadcaster || _routerAttrib.routerType != RouterAttributes.RouterType.Socket_End)
+				) {
 					
 					print("canBePlaced");
 					ChangeColor(Color.white);
@@ -159,7 +172,9 @@ public class RouterHandlerScript : MonoBehaviour {
 		// Check for expander and socket placement
 		else {
 			
-			if (!hasBeenPlaced && _routerAttrib.routerType != RouterAttributes.RouterType.Broadcaster) {
+			if (!hasBeenPlaced && 
+			(_routerAttrib.routerType != RouterAttributes.RouterType.Broadcaster && _routerAttrib.routerType != RouterAttributes.RouterType.Socket_End)
+			) {
 				
 				ChangeColor(Color.red);
 				canBePlaced = false;
