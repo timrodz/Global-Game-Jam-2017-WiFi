@@ -50,6 +50,9 @@ public class LineRendererBetweenPoints : MonoBehaviour
 
 	void Update()
 	{
+		if((StartPoint == null) || (EndPoint == null))
+			return;
+
 		if((_prevStartPoint != StartPoint.position) || (_prevEndPoint != EndPoint.position))
 		{
 			Vector3 endToStart = EndPoint.position - StartPoint.position;

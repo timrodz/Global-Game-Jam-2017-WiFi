@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RouterPlacementScript : MonoBehaviour {
-	
+public class RouterHandlerScript : MonoBehaviour {
+
+	public GameObject ExpanderWavePrefab;	
+
+	[HideInInspector]
+	public GameObject EffectGO;
+
 	private RouterAttributes ra;
+
 	
 	// Radius
 	[HideInInspector]
@@ -64,7 +70,7 @@ public class RouterPlacementScript : MonoBehaviour {
 				hasBeenActivated = true;
 				
 			}
-			else if (ra.routerType == RouterAttributes.RouterType.Broadcaster) {
+			else if (ra.routerType == RouterAttributes.RouterType.Expander) {
 				
 				Vector3 mouseScreenPosition = Input.mousePosition;
 				mouseScreenPosition.z = transform.position.z;
@@ -75,7 +81,9 @@ public class RouterPlacementScript : MonoBehaviour {
 					
 					print("Activated " + transform.name);
 					hasBeenActivated = true;
-					
+					EffectGO = (GameObject)Instantiate(ExpanderWavePrefab);
+					ScaleBetweenPoints line = EffectGO.GetComponent<ScaleBetweenPoints>();
+					line.StartPoint = transform; 
 				}
 				
 			}

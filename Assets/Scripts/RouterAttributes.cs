@@ -14,7 +14,7 @@ public class RouterAttributes : MonoBehaviour {
 	
 	public RouterType routerType;
 	
-	private RouterPlacementScript rs;
+	private RouterHandlerScript rs;
 	
 	// Line renderer
 	LineRenderer lineRenderer;
@@ -26,7 +26,7 @@ public class RouterAttributes : MonoBehaviour {
 	
 	void Awake() {
 		
-		rs = GetComponent<RouterPlacementScript>();
+		rs = GetComponent<RouterHandlerScript>();
 		lineRenderer = GetComponent<LineRenderer>();
 		
 	}
@@ -50,9 +50,9 @@ public class RouterAttributes : MonoBehaviour {
 		switch (routerType) {
 			case RouterType.Broadcaster:
 			{
-				Transform t = Instantiate(rs.GetComponentInParent<RouterManagerScript>().broadcastWave, transform.position, Quaternion.identity);
-				t.parent = this.transform;
-				t.GetComponent<BroadCastWave>().maxSize = 3.5f;
+//				Transform t = Instantiate(rs.GetComponentInParent<RouterManagerScript>().broadcastWave, transform.position, Quaternion.identity);
+//				t.parent = this.transform;
+//				t.GetComponent<BroadCastWave>().maxSize = 3.5f;
 				CapsuleCollider cc = gameObject.AddComponent<CapsuleCollider>();
 				cc.radius = 0.3f;
 				cc.isTrigger = true;
@@ -137,15 +137,25 @@ public class RouterAttributes : MonoBehaviour {
 				
 				RaycastHit hit;
 				int typeOfWall = DetermineMaxLineLength(0, out hit);
-				else {
-					
+
+//				else {
+//					
 					if (typeOfWall == 1) {
 						
 						if (Mathf.Abs(lineRenderer.GetPosition(1).y) < hit.distance) {
 							CreateLine(2, lineRenderer.GetPosition(1).y - 0.1f);
 						}
-						
-					}
+						else
+						{
+							ScaleBetweenPoints scaleBetween = rs.EffectGO.GetComponent<ScaleBetweenPoints>();
+							if(scaleBetween.EndPoint == null)
+							{
+								GameObject go = new GameObject("Expander Anchor");
+								go.transform.position = hit.point;
+								scaleBetween.EndPoint = go.transform;
+							}
+						}
+//					}
 					
 				}	
 				

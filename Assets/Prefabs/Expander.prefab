@@ -179,6 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dec319c59cc147b1ae76edf7d0b9b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExpanderWavePrefab: {fileID: 1526894276758822, guid: 5d2b1b6f759697c4bb9b53145b53b694,
+    type: 2}
+  EffectGO: {fileID: 0}
   canGrow: 1
   canBePlaced: 1
   hasBeenPlaced: 0

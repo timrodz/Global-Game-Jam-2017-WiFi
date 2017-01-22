@@ -12,12 +12,14 @@ public class ScaleBetweenPoints : MonoBehaviour
 
 	void Update()
 	{
+		if((StartPoint == null) || (EndPoint == null))
+			return;
+
 		if((_prevStartPoint != StartPoint.position) || (_prevEndPoint != EndPoint.position))
 		{
 			float length = Vector3.Distance(EndPoint.position, StartPoint.position);
 
 			Vector3 center = (StartPoint.position + EndPoint.position)/2;
-			float sign = Mathf.Sign(EndPoint.position.x - StartPoint.position.x);
 			
 			transform.position = center;
 			Vector3 scale = transform.localScale;
