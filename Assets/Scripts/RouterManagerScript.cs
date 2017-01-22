@@ -17,6 +17,9 @@ public class RouterManagerScript : MonoBehaviour {
 	public Transform broadcastWave;
 	public Transform expandWave;
 	public Transform socketWave;
+	
+	private bool hasPlacedBroadcaster = false;
+	private bool hasPlacedExpander = false;
 
 	public void CreateRouter(SelectionManager.Selections selection) {
 		
@@ -27,12 +30,16 @@ public class RouterManagerScript : MonoBehaviour {
 					if (BroadcasterAmount > 0) {
 						chosenRouter = routerPrefab[0];
 						BroadcasterAmount--;
+						if (!hasPlacedBroadcaster)
+							hasPlacedBroadcaster = true;
 					}
 				break;
 				case SelectionManager.Selections.Expander:
 					if (ExpanderAmount > 0) {
 						chosenRouter = routerPrefab[1];
 						ExpanderAmount--;
+						if (!hasPlacedExpander)
+							hasPlacedExpander = true;
 					}
 				break;
 				case SelectionManager.Selections.Socket:
@@ -44,6 +51,13 @@ public class RouterManagerScript : MonoBehaviour {
 				default:
 					chosenRouter = null;
 				break;
+			}
+			
+			if (hasPlacedBroadcaster) {
+				StartCoroutine(FadeIn(GameObject.Find("Expander Button").GetComponent<CanvasGroup>()));
+			}
+			if (hasPlacedExpander) {
+				StartCoroutine(FadeIn(GameObject.Find("Socket Button").GetComponent<CanvasGroup>()));
 			}
 			
 			if (chosenRouter != null) {
@@ -58,6 +72,20 @@ public class RouterManagerScript : MonoBehaviour {
 	public void ResetRouterState() {
 		
 		chosenRouter = null;
+		
+	}
+	
+	IEnumerator FadeIn(CanvasGroup _cg) {
+		
+		for (float t = 0; t <= 1; t += (Time.deltaTime)) {
+			
+			_cg.alpha = t;
+			yield return null;
+			
+		}
+		
+		_cg.alpha = 1;
+		_cg.blocksRaycasts = true;
 		
 	}
 	
