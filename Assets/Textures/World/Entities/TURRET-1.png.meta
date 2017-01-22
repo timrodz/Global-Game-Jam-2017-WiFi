@@ -1,9 +1,33 @@
 fileFormatVersion: 2
-guid: a46997c6ab10e0c4fbc810037c099847
-timeCreated: 1485097427
+guid: f3bdae144606af1449266f3cfe172882
+timeCreated: 1485121308
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: TURRET-1_0
+    21300002: TURRET-1_1
+    21300004: TURRET-1_2
+    21300006: TURRET-1_3
+    21300008: TURRET-1_4
+    21300010: TURRET-1_5
+    21300012: TURRET-1_6
+    21300014: TURRET-1_7
+    21300016: TURRET-1_8
+    21300018: TURRET-1_9
+    21300020: TURRET-1_10
+    21300022: TURRET-1_11
+    21300024: TURRET-1_12
+    21300026: TURRET-1_13
+    21300028: TURRET-1_14
+    21300030: TURRET-1_15
+    21300032: TURRET-1_16
+    21300034: TURRET-1_17
+    21300036: TURRET-1_18
+    21300038: TURRET-1_19
+    21300040: TURRET-1_20
+    21300042: TURRET-1_21
+    21300044: TURRET-1_22
+    21300046: TURRET-1_23
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -27,14 +51,14 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +82,189 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: TURRET-1_12
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 54
+        width: 132
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TURRET-1_13
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 56
+        width: 131
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TURRET-1_14
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 56
+        width: 131
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TURRET-1_15
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 56
+        width: 132
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TURRET-1_16
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 56
+        width: 131
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TURRET-1_17
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 56
+        width: 131
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TURRET-1_18
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 54
+        width: 132
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TURRET-1_19
+      rect:
+        serializedVersion: 2
+        x: 1813
+        y: 58
+        width: 131
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TURRET-1_20
+      rect:
+        serializedVersion: 2
+        x: 2063
+        y: 56
+        width: 131
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TURRET-1_21
+      rect:
+        serializedVersion: 2
+        x: 2313
+        y: 56
+        width: 132
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TURRET-1_22
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 53
+        width: 131
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TURRET-1_23
+      rect:
+        serializedVersion: 2
+        x: 2813
+        y: 56
+        width: 131
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
