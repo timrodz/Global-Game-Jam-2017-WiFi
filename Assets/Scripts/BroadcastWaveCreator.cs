@@ -7,9 +7,20 @@ public class BroadcastWaveCreator : MonoBehaviour
 	public float Delay  = 0.5f;
 	public GameObject BroadcastWavePrefab;
 
+	[HideInInspector]
+	public bool CanGrow = true;
+
 	void Start () 
 	{
 		StartCoroutine(SpawnWave());	
+	}
+
+	void OnTriggerEnter(Collider other) 
+	{
+			if (other.CompareTag("Signal Disruptor")) {
+				CanGrow = false;
+				//GetComponent<CapsuleCollider>().radius -= 0.65f;
+			}
 	}
 	
 	public IEnumerator SpawnWave()

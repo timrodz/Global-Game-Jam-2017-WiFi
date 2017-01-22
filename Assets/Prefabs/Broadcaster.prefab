@@ -110,6 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dec319c59cc147b1ae76edf7d0b9b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExpanderWavePrefab: {fileID: 0}
+  BroadcastWaveCreatorPrefab: {fileID: 1953302389661074, guid: e73d5b08266668d47b6c367660c35dc2,
+    type: 2}
+  EffectGO: {fileID: 0}
   canGrow: 1
   canBePlaced: 1
   hasBeenPlaced: 0
@@ -130,6 +134,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   routerType: 0
+  BroadcastGrowSpeed: 3
   c1: {r: 0, g: 1, b: 0, a: 1}
   c2: {r: 0, g: 0.42068958, b: 1, a: 1}
 --- !u!120 &120393967451207520

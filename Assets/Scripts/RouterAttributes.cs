@@ -13,6 +13,8 @@ public class RouterAttributes : MonoBehaviour {
 	};
 	
 	public RouterType routerType;
+
+	public float BroadcastGrowSpeed = 0.1f;
 	
 	private RouterHandlerScript rs;
 	
@@ -50,12 +52,14 @@ public class RouterAttributes : MonoBehaviour {
 		switch (routerType) {
 			case RouterType.Broadcaster:
 			{
-//				Transform t = Instantiate(rs.GetComponentInParent<RouterManagerScript>().broadcastWave, transform.position, Quaternion.identity);
-//				t.parent = this.transform;
-//				t.GetComponent<BroadCastWave>().maxSize = 3.5f;
-				CapsuleCollider cc = gameObject.AddComponent<CapsuleCollider>();
-				cc.radius = 0.3f;
-				cc.isTrigger = true;
+//				GameObject broadcastCreatorGO = (GameObject)Instantiate(rs.BroadcastWaveCreatorPrefab, transform.position, Quaternion.identity);
+//				rs.EffectGO = broadcastCreatorGO;
+//				broadcastCreatorGO.GetComponent<BroadcastWaveCreator>();
+//
+//				//CapsuleCollider cc = gameObject.AddComponent<CapsuleCollider>();
+//				CapsuleCollider cc = broadcastCreatorGO.AddComponent<CapsuleCollider>();
+//				cc.radius = 0.3f;
+//				cc.isTrigger = true;
 			}
 			break;
 			case RouterType.Expander:
@@ -118,18 +122,27 @@ public class RouterAttributes : MonoBehaviour {
 		switch (routerType) {
 			case RouterType.Broadcaster:
 			{
-				
-				CapsuleCollider cc = GetComponent<CapsuleCollider>();
-				if (cc.radius < 3.5f) {
-					int segments = 50;
-					CreateEllipse(segments, cc.radius);
-					cc.radius += 0.1f;
+				if(rs.EffectGO.GetComponent<BroadcastWaveCreator>().CanGrow)
+				{
+					SphereCollider sc = GetComponent<SphereCollider>();
+					if(sc != null)
+					{
+						//if (cc.radius < 3.5f) {
+						if(rs.EffectGO.transform.localScale.x < 15){
+							//int segments = 50;
+							//CreateEllipse(segments, cc.radius);
+							//cc.radius += 0.1f;
+							float scaleGrowth = BroadcastGrowSpeed * Time.deltaTime;	
+							Vector3 localScale = rs.EffectGO.transform.localScale;
+							rs.EffectGO.transform.localScale = new Vector3(localScale.x + scaleGrowth, localScale.y + scaleGrowth, localScale.z + scaleGrowth);
+						}
+						else {
+							//sc.radius -= 0.6f;
+							rs.canGrow = false;
+							rs.EffectGO.GetComponent<BroadcastWaveCreator>().CanGrow = false;
+						}
+					}
 				}
-				else {
-					cc.radius -= 0.6f;
-					rs.canGrow = false;
-				}
-				
 			}
 			break;
 			case RouterType.Expander:

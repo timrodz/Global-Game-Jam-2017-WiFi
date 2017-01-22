@@ -9,54 +9,54 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1356364139537368}
+  m_RootGameObject: {fileID: 1953302389661074}
   m_IsPrefabParent: 1
---- !u!1 &1356364139537368
+--- !u!1 &1953302389661074
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4661002365227020}
-  - component: {fileID: 33908408829642846}
-  - component: {fileID: 64443519658616036}
-  - component: {fileID: 23177860945553766}
-  - component: {fileID: 114630947416246064}
+  - component: {fileID: 4095875602483584}
+  - component: {fileID: 33066396293547134}
+  - component: {fileID: 23700620640034608}
+  - component: {fileID: 114834196223180232}
+  - component: {fileID: 54711732408750586}
   m_Layer: 0
-  m_Name: BroadcastWave
-  m_TagString: Untagged
+  m_Name: BroadcastWaveCreator
+  m_TagString: Broadcaster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4661002365227020
+--- !u!4 &4095875602483584
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356364139537368}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.34796798, y: 0.34796798, z: 0.34796798}
+  m_GameObject: {fileID: 1953302389661074}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.3659663, z: 0}
+  m_LocalScale: {x: 34.054745, y: 34.054718, z: 34.054718}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23177860945553766
+--- !u!23 &23700620640034608
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356364139537368}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1953302389661074}
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b9fc672e7e8256549a16538100b3acd2, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,38 +74,40 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33908408829642846
+--- !u!33 &33066396293547134
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356364139537368}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64443519658616036
-MeshCollider:
+  m_GameObject: {fileID: 1953302389661074}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54711732408750586
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356364139537368}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_GameObject: {fileID: 1953302389661074}
   serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114630947416246064
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &114834196223180232
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356364139537368}
+  m_GameObject: {fileID: 1953302389661074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f97e8e3924deab4083500d0938ff24d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2292f07ab3d4a9f46b0a3166b0dd073b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Limit: {fileID: 0}
-  maxSize: 0
-  GrowSpeed: 14.5
+  Delay: 0.5
+  BroadcastWavePrefab: {fileID: 1356364139537368, guid: 7fc2229975ff29b4db14f7c5e40d8d52,
+    type: 2}
+  CanGrow: 1

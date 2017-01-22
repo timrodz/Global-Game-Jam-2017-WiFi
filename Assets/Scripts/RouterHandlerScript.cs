@@ -5,6 +5,7 @@ using UnityEngine;
 public class RouterHandlerScript : MonoBehaviour {
 
 	public GameObject ExpanderWavePrefab;	
+	public GameObject BroadcastWaveCreatorPrefab;
 
 	[HideInInspector]
 	public GameObject EffectGO;
@@ -68,7 +69,15 @@ public class RouterHandlerScript : MonoBehaviour {
 				
 				print("Activated " + transform.name);
 				hasBeenActivated = true;
-				
+
+				GameObject broadcastCreatorGO = (GameObject)Instantiate(BroadcastWaveCreatorPrefab, transform.position, Quaternion.identity);
+				EffectGO = broadcastCreatorGO;
+				EffectGO.transform.localScale = transform.localScale;
+
+				//CapsuleCollider cc = gameObject.AddComponent<CapsuleCollider>();
+				SphereCollider sc = broadcastCreatorGO.AddComponent<SphereCollider>();
+				//sc.radius = 0.3f;
+				sc.isTrigger = true;
 			}
 			else if (ra.routerType == RouterAttributes.RouterType.Expander) {
 				
@@ -116,13 +125,13 @@ public class RouterHandlerScript : MonoBehaviour {
 			
 			if (other.CompareTag("Signal Disruptor")) {
 				canGrow = false;
-				GetComponent<CapsuleCollider>().radius -= 0.65f;
+				//GetComponent<CapsuleCollider>().radius -= 0.65f;
 			}
 			
 		}
 		else {
 			
-			if (other.GetType() != typeof(CapsuleCollider)) {
+			if (other.GetType() != typeof(SphereCollider)) {
 				triggerCounter++;
 			} 
 			// Check for expander and socket placement
@@ -144,7 +153,7 @@ public class RouterHandlerScript : MonoBehaviour {
 	
 	void OnTriggerExit(Collider other) {
 		
-		if (other.GetType() != typeof(CapsuleCollider)) {
+		if (other.GetType() != typeof(SphereCollider)) {
 			triggerCounter--;
 		} 
 		// Check for expander and socket placement
