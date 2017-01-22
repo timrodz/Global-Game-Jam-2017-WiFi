@@ -37,24 +37,18 @@ public class RouterManagerScript : SingletonMonoBehaviour<RouterManagerScript> {
 					if (BroadcasterAmount > 0) {
 						chosenRouter = routerPrefab[0];
 						BroadcasterAmount--;
-<<<<<<< HEAD
+						HandleResourceSpent();
 						if (!hasPlacedBroadcaster)
 							hasPlacedBroadcaster = true;
-=======
-						HandleResourceSpent();
->>>>>>> 3baffc4fd6826c5161da0773700d9ddbb507e668
 					}
 				break;
 				case SelectionManager.Selections.Expander:
 					if (ExpanderAmount > 0) {
 						chosenRouter = routerPrefab[1];
 						ExpanderAmount--;
-<<<<<<< HEAD
 						if (!hasPlacedExpander)
 							hasPlacedExpander = true;
-=======
 						//handleResourceSpent();
->>>>>>> 3baffc4fd6826c5161da0773700d9ddbb507e668
 					}
 				break;
 				case SelectionManager.Selections.Socket:
@@ -90,7 +84,6 @@ public class RouterManagerScript : SingletonMonoBehaviour<RouterManagerScript> {
 		chosenRouter = null;
 		
 	}
-<<<<<<< HEAD
 	
 	IEnumerator FadeIn(CanvasGroup _cg) {
 		
@@ -105,8 +98,6 @@ public class RouterManagerScript : SingletonMonoBehaviour<RouterManagerScript> {
 		_cg.blocksRaycasts = true;
 		
 	}
-	
-=======
 
 	public void HandleResourceSpent()
 	{
@@ -120,5 +111,5 @@ public class RouterManagerScript : SingletonMonoBehaviour<RouterManagerScript> {
 	{
 		_resourcesAmount = BroadcasterAmount + ExpanderAmount + SocketAmount;
 	}
->>>>>>> 3baffc4fd6826c5161da0773700d9ddbb507e668
+
 }

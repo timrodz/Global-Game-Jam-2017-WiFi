@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2292f07ab3d4a9f46b0a3166b0dd073b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Delay: 0.35
+  Delay: 1.5
   BroadcastWavePrefab: {fileID: 1356364139537368, guid: 7fc2229975ff29b4db14f7c5e40d8d52,
     type: 2}
   CanGrow: 1

@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4661002365227020}
   - component: {fileID: 33908408829642846}
-  - component: {fileID: 64443519658616036}
   - component: {fileID: 23177860945553766}
   - component: {fileID: 114630947416246064}
   m_Layer: 0
@@ -81,20 +80,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1356364139537368}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64443519658616036
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356364139537368}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114630947416246064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,4 +93,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Limit: {fileID: 0}
   maxSize: 0
-  GrowSpeed: 14.5
+  GrowSpeed: 10
