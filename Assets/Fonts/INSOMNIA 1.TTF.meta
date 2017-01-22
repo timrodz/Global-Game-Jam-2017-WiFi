@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 572702f6704d62040a04f231341883e6
+timeCreated: 1485020981
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Insomnia
+  fontNames:
+  - Insomnia
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

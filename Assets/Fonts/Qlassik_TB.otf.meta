@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 45cde8daa8404bb4d8ca31c2a3aa50e7
+timeCreated: 1485020981
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Qlassik Medium
+  fontNames:
+  - Qlassik Medium
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
