@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1641848835759588}
+  m_IsPrefabParent: 1
+--- !u!1 &1641848835759588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4348183524339648}
+  - component: {fileID: 114353266619777830}
+  m_Layer: 0
+  m_Name: Router Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4348183524339648
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1641848835759588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114353266619777830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1641848835759588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceeb2944c6aa646bcaaa7ee73f0bb1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  routerPrefab:
+  - {fileID: 4074533885533246, guid: 8ff417cb59e514c06934a88ecc0fdde3, type: 2}
+  - {fileID: 4074533885533246, guid: ade20d696611944ceb1c9c1512c6d989, type: 2}
+  - {fileID: 4074533885533246, guid: b3034ca13b7184966b2b5c52ed4c90c4, type: 2}
+  BroadcasterAmount: 4
+  ExpanderAmount: 2
+  SocketAmount: 0
+  broadcastWave: {fileID: 4661002365227020, guid: 7fc2229975ff29b4db14f7c5e40d8d52,
+    type: 2}
+  expandWave: {fileID: 4894497742786590, guid: 5d2b1b6f759697c4bb9b53145b53b694, type: 2}
+  socketWave: {fileID: 4008071178362892, guid: 70a7a52d8dc628f4d80f005679c4a9c3, type: 2}
