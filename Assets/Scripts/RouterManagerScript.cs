@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RouterManagerScript : MonoBehaviour {
+public class RouterManagerScript : SingletonMonoBehaviour<RouterManagerScript> {
 
 	public Transform[] routerPrefab;
 	private Transform chosenRouter;
@@ -18,6 +18,13 @@ public class RouterManagerScript : MonoBehaviour {
 	public Transform expandWave;
 	public Transform socketWave;
 
+	private int _resourcesAmount;
+
+	void Start()
+	{
+		updateResourcesAmount();
+	}
+
 	public void CreateRouter(SelectionManager.Selections selection) {
 		
 		if (chosenRouter == null) {
@@ -27,18 +34,21 @@ public class RouterManagerScript : MonoBehaviour {
 					if (BroadcasterAmount > 0) {
 						chosenRouter = routerPrefab[0];
 						BroadcasterAmount--;
+						HandleResourceSpent();
 					}
 				break;
 				case SelectionManager.Selections.Expander:
 					if (ExpanderAmount > 0) {
 						chosenRouter = routerPrefab[1];
 						ExpanderAmount--;
+						//handleResourceSpent();
 					}
 				break;
 				case SelectionManager.Selections.Socket:
 					if (SocketAmount > 0) {
 						chosenRouter = routerPrefab[2];
 						SocketAmount--;
+						HandleResourceSpent();
 					}
 				break;
 				default:
@@ -60,5 +70,17 @@ public class RouterManagerScript : MonoBehaviour {
 		chosenRouter = null;
 		
 	}
-	
+
+	public void HandleResourceSpent()
+	{
+		updateResourcesAmount();
+
+		if(_resourcesAmount == 0)
+			GameManager.Instance.HandleResourcesOver();
+	}
+
+	private void updateResourcesAmount()
+	{
+		_resourcesAmount = BroadcasterAmount + ExpanderAmount + SocketAmount;
+	}
 }
