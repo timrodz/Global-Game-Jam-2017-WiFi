@@ -16,7 +16,7 @@ public class RouterAttributes : MonoBehaviour {
 
 	public float BroadcastGrowSpeed = 0.1f;
 	
-	private RouterHandlerScript rs;
+	private RouterHandlerScript _routerHandler;
 	
 	// Line renderer
 	LineRenderer lineRenderer;
@@ -24,11 +24,11 @@ public class RouterAttributes : MonoBehaviour {
 	public Color c2 = Color.blue;
 	private float rateOfGradientChange;
 	
-	private bool hasFoundPortal = false;
+	//private bool hasFoundPortal = false;
 	
 	void Awake() {
 		
-		rs = GetComponent<RouterHandlerScript>();
+		_routerHandler = GetComponent<RouterHandlerScript>();
 		lineRenderer = GetComponent<LineRenderer>();
 		
 	}
@@ -94,13 +94,13 @@ public class RouterAttributes : MonoBehaviour {
 		
 		AnimateWaves();
 		
-		if (rs.hasBeenPlaced && rs.hasBeenActivated && rs.canGrow) {
+		if (_routerHandler.hasBeenPlaced && _routerHandler.hasBeenActivated && _routerHandler.canGrow) {
 			
 			Grow();
 		
 		}
 		
-		if (rs.hasBeenPlaced && !rs.hasBeenActivated) {
+		if (_routerHandler.hasBeenPlaced && !_routerHandler.hasBeenActivated) {
 			
 			switch (routerType) {
 				case RouterType.Broadcaster:
@@ -122,29 +122,30 @@ public class RouterAttributes : MonoBehaviour {
 		switch (routerType) {
 			case RouterType.Broadcaster:
 			{
-				if(rs.EffectGO.GetComponent<BroadcastWaveCreator>().CanGrow)
+				if(_routerHandler.EffectGO.GetComponent<BroadcastWaveCreator>().CanGrow)
 				{
 					SphereCollider sc = GetComponent<SphereCollider>();
 					if(sc != null)
 					{
 						//if (cc.radius < 3.5f) {
-						if(rs.EffectGO.transform.localScale.x < 15){
+						if(_routerHandler.EffectGO.transform.localScale.x < 15){
 							//int segments = 50;
 							//CreateEllipse(segments, cc.radius);
 							//cc.radius += 0.1f;
 							float scaleGrowth = BroadcastGrowSpeed * Time.deltaTime;	
-							Vector3 localScale = rs.EffectGO.transform.localScale;
-							rs.EffectGO.transform.localScale = new Vector3(localScale.x + scaleGrowth, localScale.y + scaleGrowth, localScale.z + scaleGrowth);
+							Vector3 localScale = _routerHandler.EffectGO.transform.localScale;
+							_routerHandler.EffectGO.transform.localScale = new Vector3(localScale.x + scaleGrowth, localScale.y + scaleGrowth, localScale.z + scaleGrowth);
 						}
 						else {
 							//sc.radius -= 0.6f;
-							rs.canGrow = false;
-							rs.EffectGO.GetComponent<BroadcastWaveCreator>().CanGrow = false;
+							_routerHandler.canGrow = false;
+							_routerHandler.EffectGO.GetComponent<BroadcastWaveCreator>().CanGrow = false;
 						}
 					}
 				}
+				break;
 			}
-			break;
+
 			case RouterType.Expander:
 			{
 				
@@ -160,20 +161,21 @@ public class RouterAttributes : MonoBehaviour {
 						}
 						else
 						{
-							ScaleBetweenPoints scaleBetween = rs.EffectGO.GetComponent<ScaleBetweenPoints>();
+							ScaleBetweenPoints scaleBetween = _routerHandler.EffectGO.GetComponent<ScaleBetweenPoints>();
 							if(scaleBetween.EndPoint == null)
 							{
 								GameObject go = new GameObject("Expander Anchor");
 								go.transform.position = hit.point;
 								scaleBetween.EndPoint = go.transform;
+								RouterManagerScript.Instance.HandleResourceSpent();
 							}
 						}
 //					}
 					
 				}	
-				
+				break;
 			}
-			break;
+
 			case RouterType.Socket:
 			{
 				AnimateWaves();
@@ -183,20 +185,10 @@ public class RouterAttributes : MonoBehaviour {
 					CreateEllipse(segments, cc.radius);
 					cc.radius += 0.1f;
 				}
-				else {
-					cc.radius -= 0.6f;
-				}
+				break;
 			}
-			break;
-			default:
-			{
-				
-			}
-			break;
 		}
-		
 	}
-	
 	void AnimateWaves() {
 		
 		rateOfGradientChange += 0.5f;

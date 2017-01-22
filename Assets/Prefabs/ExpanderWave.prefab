@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23580842292871590}
   - component: {fileID: 114666803198258892}
   - component: {fileID: 114983925612468870}
+  - component: {fileID: 114052151594033814}
   m_Layer: 0
   m_Name: ExpanderWave
   m_TagString: Untagged
@@ -89,11 +90,22 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1526894276758822}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114052151594033814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1526894276758822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d4aec382fc28a48b1e75702af4b802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114666803198258892
 MonoBehaviour:
   m_ObjectHideFlags: 1

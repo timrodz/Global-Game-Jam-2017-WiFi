@@ -10,7 +10,7 @@ public class RouterHandlerScript : MonoBehaviour {
 	[HideInInspector]
 	public GameObject EffectGO;
 
-	private RouterAttributes ra;
+	private RouterAttributes _routerAttrib;
 
 	
 	// Radius
@@ -36,13 +36,13 @@ public class RouterHandlerScript : MonoBehaviour {
 	void Awake() {
 		
 		sCollider = GetComponent<SphereCollider>();
-		ra = GetComponent<RouterAttributes>();
+		_routerAttrib = GetComponent<RouterAttributes>();
 		
 	}
 	
 	void Start() {
 		
-		if (ra.routerType != RouterAttributes.RouterType.Broadcaster) {
+		if (_routerAttrib.routerType != RouterAttributes.RouterType.Broadcaster) {
 			canBePlaced = false;
 			ChangeColor(Color.red);
 		}
@@ -65,7 +65,7 @@ public class RouterHandlerScript : MonoBehaviour {
 		}
 		else if (hasBeenPlaced && !hasBeenActivated) {
 			
-			if (ra.routerType == RouterAttributes.RouterType.Broadcaster) {
+			if (_routerAttrib.routerType == RouterAttributes.RouterType.Broadcaster) {
 				
 				print("Activated " + transform.name);
 				hasBeenActivated = true;
@@ -79,7 +79,7 @@ public class RouterHandlerScript : MonoBehaviour {
 				//sc.radius = 0.3f;
 				sc.isTrigger = true;
 			}
-			else if (ra.routerType == RouterAttributes.RouterType.Expander) {
+			else if (_routerAttrib.routerType == RouterAttributes.RouterType.Expander) {
 				
 				Vector3 mouseScreenPosition = Input.mousePosition;
 				mouseScreenPosition.z = transform.position.z;
@@ -137,7 +137,7 @@ public class RouterHandlerScript : MonoBehaviour {
 			// Check for expander and socket placement
 			else {
 				
-				if (!hasBeenPlaced && ra.routerType != RouterAttributes.RouterType.Broadcaster) {
+				if (!hasBeenPlaced && _routerAttrib.routerType != RouterAttributes.RouterType.Broadcaster) {
 					
 					print("canBePlaced");
 					ChangeColor(Color.white);
@@ -159,7 +159,7 @@ public class RouterHandlerScript : MonoBehaviour {
 		// Check for expander and socket placement
 		else {
 			
-			if (!hasBeenPlaced && ra.routerType != RouterAttributes.RouterType.Broadcaster) {
+			if (!hasBeenPlaced && _routerAttrib.routerType != RouterAttributes.RouterType.Broadcaster) {
 				
 				ChangeColor(Color.red);
 				canBePlaced = false;
