@@ -70,7 +70,7 @@ public class RouterHandlerScript : MonoBehaviour {
 				print("Activated " + transform.name);
 				hasBeenActivated = true;
 
-				GameObject broadcastCreatorGO = (GameObject)Instantiate(BroadcastWaveCreatorPrefab, transform.position, Quaternion.identity);
+				GameObject broadcastCreatorGO = (GameObject)Instantiate(BroadcastWaveCreatorPrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
 				EffectGO = broadcastCreatorGO;
 				EffectGO.transform.localScale = transform.localScale;
 

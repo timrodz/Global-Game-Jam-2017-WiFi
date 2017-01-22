@@ -37,7 +37,6 @@ public class BroadcastWaveCreator : MonoBehaviour
 			GameObject go = (GameObject)GameObject.Instantiate(BroadcastWavePrefab, transform.position, Quaternion.identity);
 			go.GetComponent<BroadCastWave>().Limit = transform;
 			yield return new WaitForSeconds(Delay);
-			// go.transform.parent = this.transform;
 		}
 	}
 }

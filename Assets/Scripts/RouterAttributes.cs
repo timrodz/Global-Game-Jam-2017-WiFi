@@ -274,4 +274,18 @@ public class RouterAttributes : MonoBehaviour {
 		
 	}
 	
+	/// OnTriggerEnter is called when the Collider other enters the trigger.
+	/// </summary>
+	/// <param name="other">The other Collider involved in this collision.</param>
+	void OnTriggerEnter(Collider other)
+	{
+		
+		if (this.CompareTag("Socket End") && other.CompareTag("House")) {
+			
+			other.GetComponent<House>().HandleGotSignal();
+			
+		}
+		
+	}
+	
 }
