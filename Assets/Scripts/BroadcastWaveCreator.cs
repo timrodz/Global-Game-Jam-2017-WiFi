@@ -34,9 +34,9 @@ public class BroadcastWaveCreator : MonoBehaviour
 	public IEnumerator SpawnWave()
 	{
 		while(true) {
-			yield return new WaitForSeconds(Delay);
 			GameObject go = (GameObject)GameObject.Instantiate(BroadcastWavePrefab, transform.position, Quaternion.identity);
 			go.GetComponent<BroadCastWave>().Limit = transform;
+			yield return new WaitForSeconds(Delay);
 			// go.transform.parent = this.transform;
 		}
 	}

@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 120083822452582966}
   m_Layer: 0
   m_Name: Socket End
-  m_TagString: Portal
+  m_TagString: Socket End
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +134,7 @@ MonoBehaviour:
     m_Bits: 1024
   routerType: 3
   BroadcastGrowSpeed: 0.1
+  _routerHandler: {fileID: 0}
   c1: {r: 0, g: 1, b: 0, a: 1}
   c2: {r: 0, g: 0, b: 1, a: 1}
 --- !u!120 &120083822452582966

@@ -71,8 +71,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 	
 		if(!_won)
 		{
-			LoseText.gameObject.SetActive(true);
-			RetryButton.gameObject.SetActive(true);
+			// LoseText.gameObject.SetActive(true);
+			// RetryButton.gameObject.SetActive(true);
 		}
 	}
 }

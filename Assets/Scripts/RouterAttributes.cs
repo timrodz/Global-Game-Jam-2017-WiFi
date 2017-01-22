@@ -49,11 +49,14 @@ public class RouterAttributes : MonoBehaviour {
 			new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
 		);
 		
+		lineRenderer.colorGradient = gradient;
+		lineRenderer.useWorldSpace = false;
 		
 		switch (routerType) {
 			case RouterType.Broadcaster:
 			{
-//				GameObject broadcastCreatorGO = (GameObject)Instantiate(rs.BroadcastWaveCreatorPrefab, transform.position, Quaternion.identity);
+				
+				// GameObject broadcastCreatorGO = (GameObject)Instantiate(rs.BroadcastWaveCreatorPrefab, transform.position, Quaternion.identity);
 //				rs.EffectGO = broadcastCreatorGO;
 //				broadcastCreatorGO.GetComponent<BroadcastWaveCreator>();
 //
@@ -74,8 +77,16 @@ public class RouterAttributes : MonoBehaviour {
 			break;
 			case RouterType.Socket_Start:
 			{
+				// CapsuleCollider cc = gameObject.AddComponent<CapsuleCollider>();
+				// cc.isTrigger = true;
+				lineRenderer.useWorldSpace = true;
+			}
+			break;
+			case RouterType.Socket_End:
+			{
 				CapsuleCollider cc = gameObject.AddComponent<CapsuleCollider>();
 				cc.isTrigger = true;
+				
 			}
 			break;
 			default:
@@ -85,25 +96,31 @@ public class RouterAttributes : MonoBehaviour {
 			break;
 		}
 		
-		lineRenderer.colorGradient = gradient;
-		lineRenderer.useWorldSpace = false;
+		
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if (_routerHandler.hasBeenPlaced && _routerHandler.hasBeenActivated && _routerHandler.canGrow) {
+			
+		if (routerType != RouterType.Socket_End) {
+			
+			if ((_routerHandler.hasBeenPlaced && _routerHandler.hasBeenActivated && _routerHandler.canGrow)) {
+				
+				Grow();
+			
+			}
+			
+		}
+		else {
 			
 			Grow();
-		
+			
 		}
 		
 		if (_routerHandler.hasBeenPlaced && !_routerHandler.hasBeenActivated) {
 			
 			switch (routerType) {
-				case RouterType.Broadcaster:
-				break;
 				case RouterType.Expander:
 				CreateLine(2, -1.5f);
 				break;
@@ -126,25 +143,19 @@ public class RouterAttributes : MonoBehaviour {
 					SphereCollider sc = GetComponent<SphereCollider>();
 					if(sc != null)
 					{
-						//if (cc.radius < 3.5f) {
-						if(_routerHandler.EffectGO.transform.localScale.x < 15){
-							//int segments = 50;
-							//CreateEllipse(segments, cc.radius);
-							//cc.radius += 0.1f;
+						if(_routerHandler.EffectGO.transform.localScale.x < 15) {
 							float scaleGrowth = BroadcastGrowSpeed * Time.deltaTime;	
 							Vector3 localScale = _routerHandler.EffectGO.transform.localScale;
 							_routerHandler.EffectGO.transform.localScale = new Vector3(localScale.x + scaleGrowth, localScale.y + scaleGrowth, localScale.z + scaleGrowth);
 						}
 						else {
-							//sc.radius -= 0.6f;
 							_routerHandler.canGrow = false;
 							_routerHandler.EffectGO.GetComponent<BroadcastWaveCreator>().CanGrow = false;
 						}
 					}
 				}
-				break;
 			}
-
+			break;
 			case RouterType.Expander:
 			{
 				
@@ -169,20 +180,27 @@ public class RouterAttributes : MonoBehaviour {
 					}
 					
 				}	
-				break;
 			}
-
+			break;
 			case RouterType.Socket_Start:
 			{
-				AnimateWaves();
-				CapsuleCollider cc = GetComponent<CapsuleCollider>();
-				if (cc.radius < 2.5f) {
-					int segments = 50;
-					CreateEllipse(segments, cc.radius);
-					cc.radius += 0.1f;
-				}
-				break;
+				Vector3 socketEnd = GameObject.FindGameObjectWithTag("Socket End").GetComponent<Transform>().position;
+				CreateLine(this.transform.position, socketEnd);
 			}
+			break;
+			case RouterType.Socket_End: 
+			{
+				if (_routerHandler.hasBeenActivated) {
+					AnimateWaves();
+					CapsuleCollider cc = GetComponent<CapsuleCollider>();
+					if (cc.radius < 3.5f) {
+						int segments = 50;
+						CreateEllipse(segments, cc.radius);
+						cc.radius += 0.1f;
+					}
+				}
+			}
+			break;
 		}
 	}
 	void AnimateWaves() {
@@ -221,13 +239,6 @@ public class RouterAttributes : MonoBehaviour {
 		
 	}
 	
-	void CheckWaveCollision() {
-		
-		// RaycastHit hit;
-		// if (Physics.SphereCast(lineRenderer.GetPosition))
-		
-	}
-	
 	void CreateLine(int _positions, float _length) {
 		
 		lineRenderer.numPositions = _positions;
@@ -236,9 +247,16 @@ public class RouterAttributes : MonoBehaviour {
 		
 	}
 	
+	void CreateLine(Vector3 _pos1, Vector3 _pos2) {
+		
+		lineRenderer.numPositions = 2;
+		lineRenderer.SetPosition(0, _pos1);
+		lineRenderer.SetPosition(1, _pos2);
+		
+	}
+	
 	int DetermineMaxLineLength(int _startPos, out RaycastHit hit) {
 		
-		// RaycastHit hit;
 		if (Physics.Raycast(transform.position, transform.up * lineRenderer.GetPosition(1).y, out hit, 100, collisionMask)) {
 			
 			if (hit.transform.CompareTag("Signal Disruptor")) {

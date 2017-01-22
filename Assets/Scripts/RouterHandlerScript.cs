@@ -42,7 +42,7 @@ public class RouterHandlerScript : MonoBehaviour {
 	
 	void Start() {
 		
-		if (_routerAttrib.routerType != RouterAttributes.RouterType.Broadcaster) {
+		if (_routerAttrib.routerType != RouterAttributes.RouterType.Broadcaster && _routerAttrib.routerType != RouterAttributes.RouterType.Socket_End) {
 			canBePlaced = false;
 			ChangeColor(Color.red);
 		}
@@ -149,7 +149,7 @@ public class RouterHandlerScript : MonoBehaviour {
 			else {
 				
 				if (!hasBeenPlaced && 
-				(_routerAttrib.routerType != RouterAttributes.RouterType.Broadcaster || _routerAttrib.routerType != RouterAttributes.RouterType.Socket_End)
+				(_routerAttrib.routerType != RouterAttributes.RouterType.Broadcaster)
 				) {
 					
 					print("canBePlaced");

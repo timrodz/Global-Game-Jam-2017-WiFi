@@ -8,9 +8,9 @@ TagManager:
   - House
   - Broadcaster
   - Expander
-  - Socket
-  - Portal
   - External Wave
+  - Socket Start
+  - Socket End
   layers:
   - Default
   - TransparentFX
