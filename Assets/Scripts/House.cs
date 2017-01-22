@@ -5,6 +5,8 @@ using UnityEngine;
 public class House : MonoBehaviour
 {
 	private bool _gotSignal = false;
+	
+	[SerializeField] private GameObject _alien;
 
 	public void HandleGotSignal()
 	{
@@ -13,6 +15,8 @@ public class House : MonoBehaviour
 			print("got signal");
 			_gotSignal = true;
 			GameManager.Instance.HandleNewHouseGotSignal();
+
+			_alien.GetComponent<Animator>().SetTrigger("GotWifi");
 		}
 	}	
 }

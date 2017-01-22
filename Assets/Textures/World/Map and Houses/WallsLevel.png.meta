@@ -1,9 +1,12 @@
 fileFormatVersion: 2
-guid: f230c2f48d0a9984d99edad936dd6387
-timeCreated: 1485113575
+guid: ea3262229c0e3ba46a1a463fbd1e4626
+timeCreated: 1485117317
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: WallsLevel_0
+    21300002: WallsLevel_1
+    21300004: WallsLevel_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +37,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -84,7 +87,46 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: WallsLevel_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 434
+        width: 468
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WallsLevel_1
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 348
+        width: 552
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WallsLevel_2
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 0
+        width: 77
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
