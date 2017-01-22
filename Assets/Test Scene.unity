@@ -640,6 +640,10 @@ MonoBehaviour:
   BroadcasterAmount: 2
   ExpanderAmount: 2
   SocketAmount: 1
+  broadcastWave: {fileID: 4661002365227020, guid: 7fc2229975ff29b4db14f7c5e40d8d52,
+    type: 2}
+  expandWave: {fileID: 4894497742786590, guid: 5d2b1b6f759697c4bb9b53145b53b694, type: 2}
+  socketWave: {fileID: 4008071178362892, guid: 70a7a52d8dc628f4d80f005679c4a9c3, type: 2}
 --- !u!4 &892595665
 Transform:
   m_ObjectHideFlags: 0

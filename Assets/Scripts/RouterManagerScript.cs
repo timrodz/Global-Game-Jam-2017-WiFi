@@ -13,6 +13,10 @@ public class RouterManagerScript : MonoBehaviour {
 	public int ExpanderAmount =  3; 
 	// [HideInInspector]
 	public int SocketAmount = 4;
+	
+	public Transform broadcastWave;
+	public Transform expandWave;
+	public Transform socketWave;
 
 	public void CreateRouter(SelectionManager.Selections selection) {
 		

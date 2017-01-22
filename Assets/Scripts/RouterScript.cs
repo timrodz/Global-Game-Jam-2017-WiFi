@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RouterScript : MonoBehaviour {
+public class RouterPlacementScript : MonoBehaviour {
 	
 	private RouterAttributes ra;
 	
@@ -35,7 +35,6 @@ public class RouterScript : MonoBehaviour {
 	
 	void Start() {
 		
-		print("OMG");
 		if (ra.routerType != RouterAttributes.RouterType.Broadcaster) {
 			canBePlaced = false;
 			ChangeColor(Color.red);
@@ -65,7 +64,7 @@ public class RouterScript : MonoBehaviour {
 				hasBeenActivated = true;
 				
 			}
-			else {
+			else if (ra.routerType == RouterAttributes.RouterType.Broadcaster) {
 				
 				Vector3 mouseScreenPosition = Input.mousePosition;
 				mouseScreenPosition.z = transform.position.z;
@@ -78,6 +77,11 @@ public class RouterScript : MonoBehaviour {
 					hasBeenActivated = true;
 					
 				}
+				
+			}
+			else {
+				
+				
 				
 			}
 			

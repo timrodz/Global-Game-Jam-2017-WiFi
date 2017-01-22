@@ -14,7 +14,7 @@ public class RouterAttributes : MonoBehaviour {
 	
 	public RouterType routerType;
 	
-	private RouterScript rs;
+	private RouterPlacementScript rs;
 	
 	// Line renderer
 	LineRenderer lineRenderer;
@@ -26,7 +26,7 @@ public class RouterAttributes : MonoBehaviour {
 	
 	void Awake() {
 		
-		rs = GetComponent<RouterScript>();
+		rs = GetComponent<RouterPlacementScript>();
 		lineRenderer = GetComponent<LineRenderer>();
 		
 	}
@@ -46,9 +46,13 @@ public class RouterAttributes : MonoBehaviour {
 			new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
 		);
 		
+		
 		switch (routerType) {
 			case RouterType.Broadcaster:
 			{
+				Transform t = Instantiate(rs.GetComponentInParent<RouterManagerScript>().broadcastWave, transform.position, Quaternion.identity);
+				t.parent = this.transform;
+				t.GetComponent<BroadCastWave>().maxSize = 3.5f;
 				CapsuleCollider cc = gameObject.AddComponent<CapsuleCollider>();
 				cc.radius = 0.3f;
 				cc.isTrigger = true;
@@ -125,21 +129,19 @@ public class RouterAttributes : MonoBehaviour {
 					cc.radius -= 0.6f;
 					rs.canGrow = false;
 				}
+				
 			}
 			break;
 			case RouterType.Expander:
 			{
+				
 				RaycastHit hit;
 				int typeOfWall = DetermineMaxLineLength(0, out hit);
-				if (hasFoundPortal) {
-					CreateLine(3, lineRenderer.GetPosition(2).x - 0.1f);
-				}
 				else {
 					
 					if (typeOfWall == 1) {
 						
 						if (Mathf.Abs(lineRenderer.GetPosition(1).y) < hit.distance) {
-							print("making big");
 							CreateLine(2, lineRenderer.GetPosition(1).y - 0.1f);
 						}
 						
@@ -219,38 +221,18 @@ public class RouterAttributes : MonoBehaviour {
 		
 		lineRenderer.numPositions = _positions;
 		lineRenderer.SetPosition(0, Vector3.zero);
-		if (hasFoundPortal) {
-			
-			RaycastHit hit;
-			lineRenderer.SetPosition(1, Vector3.up * - DetermineMaxLineLength(0, out hit));
-			lineRenderer.SetPosition(2, new Vector3(_length, lineRenderer.GetPosition(1).y / 2, 0));
-			
-		}
-		else {
-			
-			lineRenderer.SetPosition(1, Vector3.up * _length);
-			
-		}
+		lineRenderer.SetPosition(1, Vector3.up * _length);
 		
 	}
 	
 	int DetermineMaxLineLength(int _startPos, out RaycastHit hit) {
 		
 		// RaycastHit hit;
-		if (Physics.Raycast(transform.position, transform.up * lineRenderer.GetPosition(_startPos + 1).y, out hit, 100, collisionMask)) {
-			
-			print("Startpos: " + _startPos + " | " + hit.distance + " | " + hit.transform.tag);
+		if (Physics.Raycast(transform.position, transform.up * lineRenderer.GetPosition(1).y, out hit, 100, collisionMask)) {
 			
 			if (hit.transform.CompareTag("Signal Disruptor")) {
 			
-				// return hit.distance;
 				return 1;
-				
-			}
-			else if (hit.transform.CompareTag("Portal")) {
-				
-				// return hit.distance;
-				return 2;
 				
 			}
 			else {
