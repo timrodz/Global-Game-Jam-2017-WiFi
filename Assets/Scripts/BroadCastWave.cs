@@ -7,12 +7,9 @@ public class BroadCastWave : MonoBehaviour
 	[HideInInspector]
 	public Transform Limit;
 
-	[HideInInspector]
-	public float maxSize;
 	public float GrowSpeed = 0.1f;
 
-	void Start()
-	{
+	void Start() {
 		transform.localScale = Vector3.zero;
 	}
 
@@ -20,18 +17,21 @@ public class BroadCastWave : MonoBehaviour
 	{
 		if(Limit == null)
 			return;
-
-		float scaleGrowth = GrowSpeed * Time.deltaTime;	
-        Vector3 localScale = transform.localScale;
 		
-//		if(transform.localScale.x <= maxSize)
-//			transform.localScale = new Vector3(localScale.x + scaleGrowth, localScale.y + scaleGrowth, localScale.z + scaleGrowth);
-
-		//print("local scale: " + transform.localScale);
-
-		transform.localScale = new Vector3(localScale.x + scaleGrowth, localScale.y + scaleGrowth, localScale.z + scaleGrowth);
-
-		if(transform.localScale.x >= Limit.localScale.x)
-			Destroy(gameObject);
+		if(transform.localScale.x >= Limit.localScale.x) {
+			Invoke("FadeOutAndDestroy", 1.25f);
+		}
+		else {
+			float scaleGrowth = GrowSpeed * Time.deltaTime;	
+			Vector3 localScale = transform.localScale;
+			transform.localScale = new Vector3(localScale.x + scaleGrowth, localScale.y + scaleGrowth, localScale.z + scaleGrowth);
+		}
+			
+	}
+	
+	void FadeOutAndDestroy() {
+		
+		Destroy(gameObject);
+		
 	}
 }

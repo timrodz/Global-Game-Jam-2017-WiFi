@@ -51,11 +51,16 @@ public class RouterManagerScript : SingletonMonoBehaviour<RouterManagerScript> {
 						//handleResourceSpent();
 					}
 				break;
-				case SelectionManager.Selections.Socket:
+				case SelectionManager.Selections.Socket_Start:
 					if (SocketAmount > 0) {
 						chosenRouter = routerPrefab[2];
 						SocketAmount--;
 						HandleResourceSpent();
+					}
+				break;
+				case SelectionManager.Selections.Socket_End:
+					{
+						chosenRouter = routerPrefab[3];
 					}
 				break;
 				default:
@@ -87,7 +92,7 @@ public class RouterManagerScript : SingletonMonoBehaviour<RouterManagerScript> {
 	
 	IEnumerator FadeIn(CanvasGroup _cg) {
 		
-		for (float t = 0; t <= 1; t += (Time.deltaTime)) {
+		for (float t = 0; t <= 1; t += (Time.deltaTime / 0.25f)) {
 			
 			_cg.alpha = t;
 			yield return null;

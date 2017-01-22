@@ -22,10 +22,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
 	void Start()
 	{
-		WinText.gameObject.SetActive(false);
-		LoseText.gameObject.SetActive(false);
-		NextLevelButton.gameObject.SetActive(false);
-		RetryButton.gameObject.SetActive(false);
+		// WinText.gameObject.SetActive(false);
+		// LoseText.gameObject.SetActive(false);
+		// NextLevelButton.gameObject.SetActive(false);
+		// RetryButton.gameObject.SetActive(false);
 	}
 
 	public void HandleNewHouseGotSignal()

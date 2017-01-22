@@ -668,7 +668,8 @@ MonoBehaviour:
   routerPrefab:
   - {fileID: 4074533885533246, guid: 8ff417cb59e514c06934a88ecc0fdde3, type: 2}
   - {fileID: 4074533885533246, guid: ade20d696611944ceb1c9c1512c6d989, type: 2}
-  - {fileID: 4074533885533246, guid: b3034ca13b7184966b2b5c52ed4c90c4, type: 2}
+  - {fileID: 4446099026881900, guid: c51e70d92ea68462f8b8b9612b33b82a, type: 2}
+  - {fileID: 4169866451001566, guid: 1ae3e4d48499f41568c3f3d0f4db08f9, type: 2}
   BroadcasterAmount: 2
   ExpanderAmount: 2
   SocketAmount: 1
@@ -2372,7 +2373,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 7
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9705882, g: 0.82785463, b: 0.9666508, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2403,13 +2404,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1760924386}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.169532, y: 0.21315138, z: -0.037584335, w: 0.96146387}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20, y: 25, z: 0}
 --- !u!1 &1944346677
 GameObject:
   m_ObjectHideFlags: 0

@@ -93,4 +93,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Limit: {fileID: 0}
   maxSize: 0
-  GrowSpeed: 10
+  GrowSpeed: 1.5
